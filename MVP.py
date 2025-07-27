@@ -6,7 +6,7 @@ st.title("📘 Options Trading Journal")
 st.write("Upload your Webull transaction file to begin.")
 
 # File uploader
-uploaded_file = st.file_uploader("Choose a Webull .txt file", type="txt")
+uploaded_file = st.file_uploader("Choose a Webull .txt file", type=["txt", "csv"])
 if uploaded_file:
     # Read and clean data
     string_data = StringIO(uploaded_file.getvalue().decode("utf-8"))
@@ -49,5 +49,7 @@ if uploaded_file:
     # Calculate and display total P/L across all strategies
     total_pl = summary['P/L'].sum().round(2)
     st.markdown(f"**Total Portfolio P/L: ${total_pl}**")
+
+    
 else:
     st.info("Upload a file to begin analyzing your trades.")
