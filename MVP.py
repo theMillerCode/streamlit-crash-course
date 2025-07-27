@@ -45,5 +45,9 @@ if uploaded_file:
 
     st.subheader("📈 All Strategy Performance")
     st.dataframe(summary.sort_values(by="P/L", ascending=False))
+    
+    # Calculate and display total P/L across all strategies
+    total_pl = summary['P/L'].sum().round(2)
+    st.markdown(f"**Total Portfolio P/L: ${total_pl}**")
 else:
     st.info("Upload a file to begin analyzing your trades.")
